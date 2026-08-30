@@ -1,0 +1,152 @@
+/* Reset & base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff0f3 0%, #fde2e4 50%, #fad2e1 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #5a2a3a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-x: hidden;
+}
+
+/* Corações flutuando no fundo */
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hearts-bg span {
+  position: absolute;
+  bottom: -60px;
+  font-size: 1.5rem;
+  animation: floatUp linear infinite;
+  opacity: 0.4;
+}
+
+.hearts-bg span:nth-child(1)  { left:  5%; animation-duration: 8s;  animation-delay: 0s;   font-size: 1.2rem; }
+.hearts-bg span:nth-child(2)  { left: 15%; animation-duration: 10s; animation-delay: 1.5s; font-size: 1.8rem; }
+.hearts-bg span:nth-child(3)  { left: 28%; animation-duration: 7s;  animation-delay: 3s;   font-size: 1rem;   }
+.hearts-bg span:nth-child(4)  { left: 42%; animation-duration: 11s; animation-delay: 0.5s; font-size: 2rem;   }
+.hearts-bg span:nth-child(5)  { left: 57%; animation-duration: 9s;  animation-delay: 2s;   font-size: 1.4rem; }
+.hearts-bg span:nth-child(6)  { left: 70%; animation-duration: 6s;  animation-delay: 4s;   font-size: 1.1rem; }
+.hearts-bg span:nth-child(7)  { left: 82%; animation-duration: 12s; animation-delay: 1s;   font-size: 1.7rem; }
+.hearts-bg span:nth-child(8)  { left: 93%; animation-duration: 8s;  animation-delay: 3.5s; font-size: 1.3rem; }
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(-10deg); opacity: 0.4; }
+  50%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) rotate(15deg); opacity: 0; }
+}
+
+/* Card principal */
+.card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  padding: 48px 40px 40px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow:
+    0 8px 32px rgba(230, 57, 70, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  animation: fadeSlideIn 0.8s ease both;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Coração pulsante no topo */
+.big-heart {
+  font-size: 3.5rem;
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.2); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.15); }
+  56%       { transform: scale(1); }
+}
+
+/* Título */
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: #e63946;
+  line-height: 1.35;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 6px rgba(230, 57, 70, 0.2);
+}
+
+/* Foto */
+.photo-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 28px;
+}
+
+.photo-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #ff6b8a, #ffb3c1, #ff6b8a);
+  background-size: 200% 200%;
+  animation: gradientRotate 4s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gradientRotate {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+img {
+  width: 280px;
+  max-width: 100%;
+  border-radius: 18px;
+  display: block;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 36px rgba(230, 57, 70, 0.25);
+}
+
+/* Mensagem de rodapé */
+.footer-msg {
+  font-size: 0.9rem;
+  color: #b5687a;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.footer-msg span {
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
